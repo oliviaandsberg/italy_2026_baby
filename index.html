@@ -1,4 +1,4 @@
-F<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
@@ -205,10 +205,14 @@ F<!DOCTYPE html>
   .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 700px){ .grid2{ grid-template-columns: 1fr; } }
 
+  .teamgrid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+  @media (max-width: 700px){ .teamgrid{ grid-template-columns: 1fr; } }
+
   .calendar{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   @media (max-width: 780px){ .calendar{ grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 420px){ .calendar{ grid-template-columns: 1fr; } }
   .daycard{ border: 1.5px solid var(--line); background: #fff; box-shadow: 5px 5px 0 var(--ink); padding: 16px; display:flex; flex-direction: column; gap: 12px; min-height: 92px; }
+  .daycard.muted{ opacity: 0.4; box-shadow: 5px 5px 0 var(--line-soft); }
   .daycard .date{ font-weight: 700; text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.03em; }
   .daycard .plan{ color: var(--rose); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; border-top: 1px dashed var(--line-soft); padding-top: 10px; }
 
@@ -281,12 +285,12 @@ F<!DOCTYPE html>
     <span class="brand">Nardò &rsquo;26</span>
     <div class="navlinks">
       <a href="#vibben">(Vibben)</a>
-      <a href="#schema">(Schema)</a>
+      <a href="#schema">(Flygtider)</a>
       <a href="#boende">(Boende)</a>
       <a href="#bilar">(Bilar)</a>
-      <a href="#kalender">(Kalender)</a>
+      <a href="#veckoschema">(Veckoschema)</a>
       <a href="#budget">(Budget)</a>
-      <a href="#guide">(Leo guide)</a>
+      <a href="#guide">(Leo-guide)</a>
       <a href="#todo">(To do)</a>
       <a href="#att-bestamma">(Att bestämma)</a>
     </div>
@@ -306,7 +310,7 @@ F<!DOCTYPE html>
           <span class="tag-date">(26.07&ndash;02.08.2026)</span>
         </div>
         <div class="hero-loc">Elva vänner, ett hus, tre bilar</div>
-        <a class="pill-btn" href="#schema">Se schemat <span class="icon">→</span></a>
+        <a class="pill-btn" href="#schema">Se flygtiderna <span class="icon">→</span></a>
       </div>
       <div class="corner-marks">
         <span>26.07</span>
@@ -325,9 +329,7 @@ F<!DOCTYPE html>
       <span class="lbl">Kvar att bestämma</span>
     </div>
     <ul>
-      <li>3:e hyrbilen är inte bokad än, och det är inte bestämt vem som kör den</li>
-      <li>Extra förare för bilarna är inte bestämt</li>
-      <li>Alva och Sibbes exakta flygtider saknas, men de har bokat och är på plats redan 26 juli</li>
+      <li>Extraförare för bilarna är inte bestämt</li>
     </ul>
   </div>
 </section>
@@ -364,7 +366,7 @@ F<!DOCTYPE html>
     <div class="block-head">
       <span class="idx">(02)</span>
       <div>
-        <h2 class="display">Schema</h2>
+        <h2 class="display">Flygtider</h2>
         <p class="sub">Alla flyger inte tillsammans, så här är hela bilden samlad. Tider är lokal tid.</p>
       </div>
     </div>
@@ -386,11 +388,11 @@ F<!DOCTYPE html>
       </div>
       <div class="board-row">
         <span class="grp">Alva &amp; Sibbe</span>
-        <span class="route"><span class="tag note">Bokat, redan på plats 26 juli</span></span>
-        <span class="time"><span class="lbl">Avgång</span>?</span>
-        <span class="time"><span class="lbl">Ankomst</span>?</span>
+        <span class="route">Göteborg → Brindisi <span class="tag note">24 juli</span></span>
+        <span class="time"><span class="lbl">Avgång</span>06.00</span>
+        <span class="time"><span class="lbl">Ankomst</span>11.35</span>
       </div>
-      <div class="board-foot">Sanna &amp; Dave landar klart senare än resten, räkna med att äta något smått innan de är framme.</div>
+      <div class="board-foot">Sanna &amp; Dave landar klart senare än resten, räkna med att äta något smått innan de är framme. Alva &amp; Sibbe landar redan 24 juli, två dagar innan resten.</div>
     </div>
 
     <div class="board">
@@ -410,9 +412,9 @@ F<!DOCTYPE html>
       </div>
       <div class="board-row">
         <span class="grp">Alva &amp; Sibbe</span>
-        <span class="route"><span class="tag note">Bokat, tider saknas</span></span>
-        <span class="time"><span class="lbl">Avgång</span>?</span>
-        <span class="time"><span class="lbl">Ankomst</span>?</span>
+        <span class="route">Brindisi → Göteborg</span>
+        <span class="time"><span class="lbl">Avgång</span>10.55</span>
+        <span class="time"><span class="lbl">Ankomst</span>17.50</span>
       </div>
       <div class="board-foot">Sanna &amp; Dave flyger hem klart tidigare, kan vara läge att planera sista dagen efter det.</div>
     </div>
@@ -453,10 +455,10 @@ F<!DOCTYPE html>
         <ul class="status-list">
           <li class="status-row"><span class="who">Cajsa</span><span class="pill ok">Bokad</span></li>
           <li class="status-row"><span class="who">Alva</span><span class="pill ok">Bokad</span></li>
-          <li class="status-row"><span class="who">Bil 3</span><span class="pill wait">Ej bokad</span></li>
+          <li class="status-row"><span class="who">Lisa &amp; Petter</span><span class="pill ok">Bokad</span></li>
         </ul>
-        <p class="fine">2 av 3 bilar bokade härifrån hittills.</p>
-        <p class="fine" style="font-weight:700; color:var(--ink); text-transform:uppercase; letter-spacing:0.03em; margin-top:14px;">Extra förare TBD</p>
+        <p class="fine">Alla tre bilar bokade nu. Lisa säger bra pris på bil 3, exakt summa kommer sen.</p>
+        <p class="fine" style="font-weight:700; color:var(--ink); text-transform:uppercase; letter-spacing:0.03em; margin-top:14px;">Extraförare TBD</p>
       </div>
 
       <div class="card">
@@ -471,23 +473,44 @@ F<!DOCTYPE html>
   </div>
 </section>
 
-<section class="block" id="kalender">
+<section class="block" id="veckoschema">
   <div class="wrap">
     <div class="block-head">
       <span class="idx">(05)</span>
       <div>
-        <h2 class="display">Kalender</h2>
+        <h2 class="display">Veckoschema</h2>
       </div>
     </div>
     <div class="calendar">
-      <div class="daycard"><span class="date">Sön 26/7</span><span class="plan">Ankomst</span></div>
-      <div class="daycard"><span class="date">Mån 27/7</span><span class="plan">TBD</span></div>
+      <div class="daycard"><span class="date">Fre 24/7</span><span class="plan">Alva &amp; Sibbe ankomst 11.35</span></div>
+      <div class="daycard muted"><span class="date">Lör 25/7</span></div>
+      <div class="daycard"><span class="date">Sön 26/7</span><span class="plan">Sthlms-gänget ankomst 20.15</span><span class="plan">Sanna &amp; Dave ankomst 22.25</span></div>
+      <div class="daycard"><span class="date">Mån 27/7</span><span class="plan">Middag i huset - lag 1</span></div>
       <div class="daycard"><span class="date">Tis 28/7</span><span class="plan">TBD</span></div>
-      <div class="daycard"><span class="date">Ons 29/7</span><span class="plan">TBD</span></div>
+      <div class="daycard"><span class="date">Ons 29/7</span><span class="plan">Middag i huset - lag 2</span></div>
       <div class="daycard"><span class="date">Tors 30/7</span><span class="plan">TBD</span></div>
-      <div class="daycard"><span class="date">Fre 31/7</span><span class="plan">TBD</span></div>
+      <div class="daycard"><span class="date">Fre 31/7</span><span class="plan">Middag i huset - lag 3</span></div>
       <div class="daycard"><span class="date">Lör 1/8</span><span class="plan">TBD</span></div>
-      <div class="daycard"><span class="date">Sön 2/8</span><span class="plan">Avresedag</span></div>
+      <div class="daycard"><span class="date">Sön 2/8</span><span class="plan">Sthlms-gänget avgång 20.40</span><span class="plan">Alva &amp; Sibbe avgång 10.55</span><span class="plan">Sanna &amp; Dave avgång 17.05</span></div>
+    </div>
+
+    <div style="margin-top:44px;">
+      <h3 style="font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.03em; margin:0 0 6px 0;">Middagslag</h3>
+      <p class="sub" style="margin-top:0;">Ansvarar för tema, middag, drink och lek den kvällen.</p>
+      <div class="teamgrid">
+        <div class="card">
+          <h3>Lag 1 - Måndag</h3>
+          <p style="color:var(--ink-soft); font-size:0.94rem; margin:0;">Tess, Petter, Alva &amp; Selma</p>
+        </div>
+        <div class="card">
+          <h3>Lag 2 - Onsdag</h3>
+          <p style="color:var(--ink-soft); font-size:0.94rem; margin:0;">Lisa, Sibbe, Sanna &amp; Gustav</p>
+        </div>
+        <div class="card">
+          <h3>Lag 3 - Fredag</h3>
+          <p style="color:var(--ink-soft); font-size:0.94rem; margin:0;">Olle, Dave &amp; Caj</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -498,14 +521,14 @@ F<!DOCTYPE html>
       <span class="idx">(06)</span>
       <div>
         <h2 class="display">Budget</h2>
-        <p class="sub">Ungefärlig kostnad hittills. Huset saknas fortfarande, så totalen kommer ändras.</p>
+        <p class="sub">Kostnad hittills. Bil 3 har vi ej pris på än, men Lisa säger att det var bra pris, så totalen kan ändras lite.</p>
       </div>
     </div>
 
     <div class="card">
       <div class="budget-row">
-        <span class="label">Hus<span class="note">Airbnb, delas av hela gänget</span></span>
-        <span class="pill wait">Uppdateras snart</span>
+        <span class="label">Hus<span class="note">Airbnb, delas av hela gänget, 5 708 kr per person</span></span>
+        <span class="amount">62 788 kr</span>
       </div>
       <div class="budget-row">
         <span class="label">Bilar<span class="note">3 st à ca 7 000 kr</span></span>
@@ -517,10 +540,10 @@ F<!DOCTYPE html>
       </div>
 
       <div class="budget-total">
-        <div class="row"><span class="k">Totalt hittills</span><span class="v">21 880 kr</span></div>
-        <div class="row per"><span class="k">Per person (11 pers)</span><span class="v">ca 1 989 kr</span></div>
+        <div class="row"><span class="k">Totalt hittills</span><span class="v">84 668 kr</span></div>
+        <div class="row per"><span class="k">Per person (11 pers)</span><span class="v">ca 7 697 kr</span></div>
       </div>
-      <p class="fine">Taxipriset är en uppskattning från chatten, dubbelkolla innan bokning. Huset tillkommer när priset är klart, så per-person-summan lär gå upp.</p>
+      <p class="fine">Taxi- och bilkostnaden är uppskattningar från chatten, dubbelkolla innan bokning. Bil 3 har vi ej pris på än, men Lisa säger att det var bra pris.</p>
     </div>
   </div>
 </section>
@@ -530,8 +553,8 @@ F<!DOCTYPE html>
     <div class="block-head">
       <span class="idx">(07)</span>
       <div>
-        <h2 class="display">Leo guide</h2>
-        <p class="sub">Lokala tips från Leo, som har koll på området. Klicka på en rubrik för att fälla ut.</p>
+        <h2 class="display">Leo-guide</h2>
+        <p class="sub">Lokala tips från Leo, som bott där. Klicka på en rubrik för att fälla ut.</p>
       </div>
     </div>
 
@@ -665,11 +688,9 @@ F<!DOCTYPE html>
     </div>
     <div class="card">
       <ul class="todo-list">
-        <li><span class="box"></span> Bestämma vem som står på 3:e bilen</li>
-        <li><span class="box"></span> Bestämma vilka som ska vara extra förare</li>
+        <li><span class="box"></span> Bestämma vilka som ska vara extraförare</li>
         <li><span class="box"></span> Boka restauranger</li>
         <li><span class="box"></span> Sätta schema för veckan</li>
-        <li><span class="box"></span> Bestämma matlag för kvällarna vi lagar mat i huset</li>
         <li><span class="box"></span> Göra en inköpslista för frukost, snacks och lunch i huset</li>
       </ul>
     </div>
